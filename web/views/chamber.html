@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿舍表</title>
+    <script src="../public/utils/jquery.min.js"></script>
+    <script src="../public/utils/bootstrap3.3.7.min.js"></script>
+    <link rel="stylesheet" href="../public/utils/bootstrap3.3.7.min.css">
+    <link rel="stylesheet" href="../public/css/chamber.css">
+</head>
+
+<body>
+    <h1>宿舍表</h1>
+    <p><input type="text" id="chazhao" placeholder="宿舍名称" autocomplete='off'><button
+            onclick="chazhao()">查找</button><button data-target="#myModal" data-toggle="modal">添加宿舍</button></p>
+    <div id="d1">
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>宿舍名称</th>
+                    <th>寝室类别</th>
+                    <th>可住人数</th>
+                    <th>已住人数</th>
+                    <th>总可住人数</th>
+                    <th>查寝</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+    <!-- 模态框添加宿舍 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 300px">
+            <div class="modal-content" style="margin-top: 120px; ">
+                <div class="modal-body" style="height:180px;">
+                    <p>宿舍名称：<input type="text" id="name" class="form-control" autocomplete='off'></p>
+                    <p>宿舍类别：<select name="" id="sex" class="form-control">
+                            <option value="男寝室">男寝室</option>
+                            <option value="女寝室">女寝室</option>
+                        </select></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default quxiao1" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" id="tianjia" onclick="tianjia()">
+                        添加
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框修改宿舍 -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 300px">
+            <div class="modal-content" style="margin-top: 120px;">
+                <div class="modal-body" style="height:180px;">
+                    <p>宿舍名称：<input type="text" name="" id="namex" class="form-control" autocomplete='off'></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default quxiao1" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" id="xg" onclick="xg()">
+                        修改
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 500px">
+            <div class="modal-content" style="margin-top: 120px;">
+                <div class="modal-body" style="height:300px;">
+                    <table border="0px" cellspacing="1" bgcolor="#cccccc" id="xq">
+                        <tr>
+                            <th id="eesd" colspan="2">宿舍信息表</th>
+                        </tr>
+                        <tr class="bg-success text-primary">
+                            <td>在宿舍</td>
+                            <td id="zai1"></td>
+                        </tr>
+                        <tr class="bg-info text-warning">
+                            <td>请假</td>
+                            <td id="qing1"></td>
+                        </tr>
+                        <tr class="bg-warning text-danger">
+                            <td>外出未归</td>
+                            <td id="wai1"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default quxiao1" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                        确认
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 1200px">
+            <div class="modal-content" style="margin-top: 30px;">
+                <div class="modal-body">
+                    <h1 id="xqxx"></h1>
+                    <table border="0px" cellspacing="1" bgcolor="#cccccc" id="xqx">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>姓名</th>
+                                <th>年龄</th>
+                                <th>性别</th>
+                                <th>民族</th>
+                                <th>宿舍名称</th>
+                                <th>联系方式</th>
+                                <th>家庭住址</th>
+                                <th>班级名称</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody2">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default quxiao1" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                        确认
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ts">添加寝室成功</div>
+</body>
+
+</html>
+<script src="../public/js/chamber.js"></script>

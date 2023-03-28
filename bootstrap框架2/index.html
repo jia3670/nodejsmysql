@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>LarryCMS后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<!-- load css -->
+	<link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+	<link rel="stylesheet" type="text/css" href="css/adminstyle.css" media="all">
+	<script src="../web/public/utils/jquery.min.js"></script>
+	<style>
+		.layui-nav>li:nth-of-type(2)>img {
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0px;
+			position: absolute;
+			z-index: 9999;
+
+		}
+
+		.layui-nav:nth-of-type(2) {
+			width: 510px;
+		}
+
+		.larry-header-item>li:nth-of-type(2) {
+			width: 50px;
+			height: 50px;
+			position: relative;
+		}
+
+		.header ul.larry-header-item li.layui-nav-item {
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+
+		.layui-nav>li:nth-of-type(2)>input {
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+		}
+
+		.layui-nav>li:nth-of-type(2)>button {
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="layui-layout layui-layout-admin" id="layui_layout">
+		<!-- 顶部区域 -->
+		<div class="layui-header header header-demo">
+			<div class="layui-main">
+				<!-- logo区域 -->
+				<div class="admin-logo-box">
+					<a class="logo" href="http://www.kuxuebao.net" title="logo">多表关联系统</a>
+					<div class="larry-side-menu">
+						<i class="fa fa-bars" aria-hidden="true"></i>
+					</div>
+				</div>
+				<!-- 顶级菜单区域 -->
+				<div class="layui-larry-menu">
+					<ul class="layui-nav clearfix">
+						<li class="layui-nav-item layui-this">
+							<a href="javascirpt:;"><i class="iconfont icon-wangzhanguanli"></i>内容管理</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascirpt:;"><i class="iconfont icon-weixin3"></i>微信公众</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascirpt:;"><i class="iconfont icon-ht_expand"></i>扩展模块</a>
+						</li>
+					</ul>
+				</div>
+				<!-- 右侧导航 -->
+				<ul class="layui-nav larry-header-item">
+					<li class="layui-nav-item">
+						账户名：广州丹奇日化
+					</li>
+					<li class="layui-nav-item">
+						<input type="file" name="" id="fileIpu">
+						<button id="btts">上传</button>
+						<img src="" alt="" id="use">
+					</li>
+					<li class="layui-nav-item first">
+						<a href="javascript:;">
+							<cite>默认站点</cite>
+							<span class="layui-nav-more"></span>
+						</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="">站点1</a>
+							</dd>
+							<dd>
+								<a href="">站点2</a>
+							</dd>
+
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;" id="lock">
+							<i class="iconfont icon-diannao1"></i>
+							锁屏</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="../web/views/register(这个是登录注册).html">
+							<i class="iconfont icon-exit"></i>
+							退出</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 左侧侧边导航开始 -->
+		<div class="layui-side layui-side-bg layui-larry-side" id="larry-side">
+			<div class="layui-side-scroll" id="larry-nav-side" lay-filter="side">
+
+				<!-- 左侧菜单 -->
+				<ul class="layui-nav layui-nav-tree">
+					<!-- 学校内容 -->
+					<li class="layui-nav-item">
+						<a href="javascript:;">
+							<i class="iconfont icon-jiaoseguanli"></i>
+							<span>学生信息</span>
+							<em class="layui-nav-more"></em>
+						</a>
+						<dl class="layui-nav-child">
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 左侧侧边导航结束 -->
+		<!-- 右侧主体内容 -->
+		<div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee;">
+			<div class="layui-tab layui-tab-card larry-tab-box" id="larry-tab" lay-filter="demo" lay-allowclose="true">
+				<div class="go-left key-press pressKey" id="titleLeft" title="滚动至最右侧"><i
+						class="larry-icon larry-weibiaoti6-copy"></i> </div>
+				<ul class="layui-tab-title">
+					<li class="layui-this" id="admin-home"><i class="iconfont icon-geren1"
+							data-icon='icon-geren1'></i><em id="xinxi">学生信息</em></li>
+				</ul>
+				<div class="go-right key-press pressKey" id="titleRight" title="滚动至最左侧"><i
+						class="larry-icon larry-right"></i></div>
+				<ul class="layui-nav closeBox">
+					<li class="layui-nav-item">
+						<a href="javascript:;"><i class="iconfont icon-caozuo"></i> 页面操作</a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;" class="refresh refreshThis" id="shua"><i
+										class="layui-icon">&#x1002;</i> 刷新当前</a></dd>
+							<dd><a href="javascript:;" class="closePageOther"><i class="iconfont icon-prohibit"></i>
+									关闭其他</a></dd>
+							<dd><a href="javascript:;" class="closePageAll"><i class="iconfont icon-guanbi"></i>
+									关闭全部</a></dd>
+						</dl>
+					</li>
+				</ul>
+				<div class="layui-tab-content" style="min-height: 150px; ">
+					<div class="layui-tab-item layui-show">
+						<iframe class="larry-iframe" data-id='0' src="" id="qiehuan"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 底部区域 -->
+		<div class="layui-footer layui-larry-foot" id="larry-footer">
+			<div class="layui-mian">
+				<p class="p-admin">
+					<span>2017 &copy;</span>
+					广州普金计算机科技股份有限公司,版权所有
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- 加载js文件-->
+	<script type="text/javascript" src="common/layui/layui.js"></script>
+	<script type="text/javascript" src="js/larry.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<!-- 锁屏 -->
+	<div class="lock-screen" style="display: none;">
+		<div id="locker" class="lock-wrapper">
+			<div id="time"></div>
+			<div class="lock-box center">
+				<img src="images/userimg.jpg" alt="">
+				<h1>admin</h1>
+				<duv class="form-group col-lg-12">
+					<input type="password" placeholder='锁屏状态，请输入密码解锁' id="lock_password" class="form-control lock-input"
+						autofocus name="lock_password">
+					<button id="unlock" class="btn btn-lock">解锁</button>
+				</duv>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script>
+	$("#use").click(function () {
+		$("#fileIpu").click();
+		$("#fileIpu").on("change", function () {
+			$("#btts").click();
+		})
+	})
+	$("#btts").click(function () {
+		// 1,获取file
+		let urlObj = document.getElementById("fileIpu").files[0];
+		// 2，创建formData 处理form表单的数据
+		let formData = new FormData();
+		// 3，把需要操作的数据添加到formData
+		formData.append("fileName", urlObj);
+
+		// 发送ajax请求
+		$.ajax({
+			type: "post",
+			url: "http://localhost:3000/api/upload",
+			data: formData,
+			contentType: false,
+			// ajax与后端multer模块 一起上传文件，不需要配置
+			// 避免jq进行操作，改变分隔符
+			processData: false,
+			// 不解析数据【不想转换信息的格式】
+			success: (va) => {
+				$("img").attr("src", va)
+			}
+		})
+	})
+	window.onload = function () {
+		function load() {
+			$.ajax({
+				type: "get",
+				url: "http://localhost:3000/api/hhtt",
+				headers: { Authorization: sessionStorage.getItem("token") },
+				success: function (eew) {
+					if (eew.success == true) {
+						console.log(eew.msg);
+					} else {
+						window.location.href = "../web/views/register(这个是登录注册).html"
+					}
+				}
+			})
+			$("#qiehuan").attr("src", "../web/views/xinxi.html")
+			$.ajax({
+				type: "get",
+				url: "http://localhost:3000/api/hhttss",
+				success: (eew) => {
+					if (eew == "cz") {
+						$("#qiehuan").attr("src", "../web/views/chakan.html")
+					}
+					if (eew == "gc") {
+						$("#qiehuan").attr("src", "../web/views/xinxi.html")
+					}
+				}
+			})
+		}
+		load()
+	}
+</script>
+
+</html>

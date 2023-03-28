@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生表</title>
+    <script src="../public/utils/jquery.min.js"></script>
+    <script src="../public/utils/bootstrap3.3.7.min.js"></script>
+    <link rel="stylesheet" href="../public/utils/bootstrap3.3.7.min.css">
+    <link rel="stylesheet" href="../public/css/students.css">
+</head>
+
+<body>
+    <h1>学生表</h1>
+    <p><input type="text" id="chazhao" placeholder="学生名称" autocomplete='off'><button
+            onclick="chazhao()">查找</button><button data-target="#myModal" data-toggle="modal"
+            onclick="xrclass()">添加学生</button></p>
+    <div id="d1">
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>民族</th>
+                    <th>宿舍名称</th>
+                    <th>联系方式</th>
+                    <th>家庭住址</th>
+                    <th>班级名称</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+    <!-- 模态框添加学生 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 600px">
+            <div class="modal-content" style="margin-top: 120px; ">
+                <div class="modal-body" style="height:300px;">
+                    <span>姓名：<input type="text" id="stu_name" class="form-control" autocomplete='off'></span>
+                    <span>年龄：<input type="text" id="stu_age" class="form-control" autocomplete='off'></span>
+                    <span>民族：<input type="text" id="nation" class="form-control" autocomplete='off'></span>
+                    <span>性别：<input type="radio" name="sex" value="男" id="stu_man" checked="checked">男<input
+                            type="radio" name="sex" value="女" id="stu_woman">女</span>
+                    <span>联系方式：<input type="text" name="" id="contact" class="form-control" autocomplete='off'></span>
+                    <span>家庭地址：<input type="text" name="" id="address" class="form-control" autocomplete='off'></span>
+                    <span>所属班级：<select name="" id="classname1" class="form-control"></select></span>
+                    <span>宿舍名称：<select name="" id="dormitoryNo" class="form-control"></select></span>
+                    <span>状态：<select name="" id="status" class="form-control">
+                            <option value="正常">正常</option>
+                            <option value="请假">请假</option>
+                            <option value="外出">外出</option>
+                        </select></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default quxiao1" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" id="tianjia" onclick="tianjia()">
+                        添加
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框修改学生 -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 600px">
+            <div class="modal-content" style="margin-top: 120px; ">
+                <div class="modal-body" style="height:300px;">
+                    <span>姓名：<input type="text" id="stu_namex" class="form-control" autocomplete='off'></span>
+                    <span>年龄：<input type="text" id="stu_agex" class="form-control" autocomplete='off'></span>
+                    <span>民族：<input type="text" id="nationx" class="form-control" autocomplete='off'></span>
+                    <span>性别：<input type="radio" name="sexx" value="男" id="stu_manx" checked="checked"
+                            autocomplete='off'>男<input type="radio" name="sexx" value="女" id="stu_womanx"
+                            autocomplete='off'>女</span>
+                    <span>联系方式：<input type="text" name="" id="contactx" class="form-control" autocomplete='off'></span>
+                    <span>家庭地址：<input type="text" name="" id="addressx" class="form-control" autocomplete='off'></span>
+                    <span>所属班级：<select name="" id="classname1x" class="form-control"></select></span>
+                    <span>宿舍名称：<select name="" id="dormitoryNox" class="form-control"></select></span>
+                    <span>状态：<select name="" id="statusx" class="form-control">
+                            <option value="正常">正常</option>
+                            <option value="请假">请假</option>
+                            <option value="外出">外出</option>
+                        </select></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default quxiao1" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" id="xg" onclick="xg()">
+                        修改
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ts">添加学生成功</div>
+</body>
+
+</html>
+<script src="../public/js/students.js"></script>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息填写表</title>
+    <script src="../public/utils/jquery.min.js"></script>
+    <style>
+        #s3 {
+            height: 90%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            /* display: none; */
+        }
+
+        #sftl2 {
+            width: 100%;
+            height: 10%;
+            box-sizing: border-box;
+            padding: 40px 30px;
+            box-sizing: border-box;
+        }
+
+        #sftl2>span {
+            font-size: 18px;
+            /* color: gray; */
+            font-weight: 600;
+            padding-left: 10px;
+            box-sizing: border-box;
+            border-left: 5px solid blue;
+        }
+
+        #sftl2>button {
+            font-size: 18px;
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            border: none;
+            margin-left: 5px;
+            background-color: rgb(255, 125, 115);
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        #sftl2>button:nth-of-type(2) {
+            background-color: rgb(0, 150, 255);
+        }
+
+        p {
+            margin-top: 50px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        p>button {
+            position: absolute;
+            right: 200px;
+            padding: 10px 20px;
+            color: white;
+            background-color: rgb(0, 124, 248);
+            border: none;
+            border-radius: 5px;
+            font-size: 17px;
+        }
+
+        table {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        tr>td {
+            background-color: white;
+            text-align: center;
+            height: 70px;
+            font-size: 17px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        tr>th {
+            background-color: white;
+            height: 120px;
+            font-size: 30px;
+            letter-spacing: 50px;
+        }
+
+        tr>td>input {
+            border: none;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            box-sizing: border-box;
+            line-height: 100%;
+            font-size: 17px;
+        }
+
+        #ts {
+            padding: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0%;
+            background-color: rgb(1, 150, 88);
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 20px;
+            z-index: 99999;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="s3">
+        <div id="sftl2"><span>个人基本信息表</span>
+        </div>
+        <table border="0px" cellspacing="1" bgcolor="#cccccc">
+            <tr>
+                <th colspan="6">个人基本信息登记表</th>
+            </tr>
+            <tr>
+                <td>学生名称</td>
+                <td><input type="text" id="name" autocomplete='off'></td>
+                <td>学生性别</td>
+                <td><input type="text" id="sex" autocomplete='off'></td>
+                <td>民族</td>
+                <td><input type="text" id="nation" autocomplete='off'></td>
+            </tr>
+            <tr>
+                <td>学生年龄</td>
+                <td><input type="text" id="age" autocomplete='off'></td>
+                <td>联系方式</td>
+                <td colspan="3"><input type="text" id="contact" autocomplete='off'></td>
+            </tr>
+            <tr>
+                <td>家庭住址</td>
+                <td colspan="6"><input type="text" id="address" autocomplete='off'></td>
+            </tr>
+        </table>
+        <p><button id="tian1">添加信息</button></p>
+    </div>
+    <div id="ts">添加学生成功</div>
+</body>
+
+</html>
+<script>
+    function qkg(ew) {
+        let qkgh = ew.replace(/\s*/g, "");
+        return qkgh
+    }
+    function tsy(tsy) {
+        $("#ts").html(tsy);
+        $("#ts").fadeToggle(1300);
+        $("#ts").fadeToggle(1300);
+    }
+    class Stu {
+        constructor(name, sex, nation, age, contact, address) {
+            this.name = name;
+            this.sex = sex;
+            this.nation = nation;
+            this.age = age;
+            this.contact = contact;
+            this.address = address
+        }
+    }
+    $("#tian1").click(function () {
+        $("#qiehuan", parent.document).attr("src", "../web/views/chakan.html")
+        if (qkg($("#name").val()) == '' || qkg($("#sex").val()) == '' || qkg($("#nation").val()) == '' || qkg($("#age").val()) == '' || qkg($("#contact").val()) == '' || qkg($("#address").val()) == '') {
+            tsy("请全部输入");
+            return
+        }
+        let sru = new Stu(qkg($("#name").val()), qkg($("#sex").val()), qkg($("#nation").val()), qkg($("#age").val()), qkg($("#contact").val()), qkg($("#address").val()));
+        $.ajax({
+            type: "post",
+            url: "http://localhost:3000/api/xuetian",
+            data: sru,
+            success: (enc) => {
+                if (enc == "cg") {
+                    tsy("添加成功");
+                    $("#qiehuan", parent.document).attr("src", "../web/views/chakan.html")
+                }
+                if (eec == "cc") {
+                    tsy("添加出错");
+                }
+            }
+        })
+    })
+</script>

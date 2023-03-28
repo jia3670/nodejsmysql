@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息查看表</title>
+    <script src="../public/utils/jquery.min.js"></script>
+    <style>
+        #s2 {
+            height: 90%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            /* display: none; */
+        }
+
+        #sftl2 {
+            width: 100%;
+            height: 10%;
+            box-sizing: border-box;
+            padding: 20px 30px;
+            box-sizing: border-box;
+        }
+
+        #sftl2>span {
+            font-size: 18px;
+            font-weight: 600;
+            padding-left: 10px;
+            box-sizing: border-box;
+            border-left: 5px solid blue;
+        }
+
+        #sftl2>button {
+            font-size: 18px;
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            border: none;
+            margin-left: 5px;
+            background-color: rgb(255, 125, 115);
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        #sftl2>button:nth-of-type(2) {
+            background-color: rgb(0, 150, 255);
+        }
+
+        #sftlz {
+            width: 100%;
+            height: 59%;
+            padding-left: 50px;
+            box-sizing: border-box;
+        }
+
+        #sftlz>p {
+            display: inline-block;
+            position: relative;
+            height: 30px;
+            width: 80%;
+        }
+
+        #sftlz>p>span:nth-child(2) {
+            position: absolute;
+            left: 100px;
+        }
+
+        #sftlz>p>span:nth-child(1) {
+            color: gray;
+        }
+
+        #sftlz>p>button {
+            position: absolute;
+            left: 100px;
+            padding: 10px 20px;
+            color: white;
+            background-color: rgb(0, 124, 248);
+            border: none;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        #sftlz>p:last-child {
+            border: none;
+        }
+
+        #ts {
+            padding: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0%;
+            background-color: rgb(1, 150, 88);
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 20px;
+            z-index: 99999;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="s2">
+        <div id="sftl2"><span>查看信息</span></div>
+        <div id="sftlz">
+            <p><span>学生姓名：</span><span id="name"></span></p>
+            <p><span>学生性别：</span><span id="sex"></span></p>
+            <p><span>学生年龄：</span><span id="age"></span></p>
+            <p><span>民族：</span><span id="nation"></span></p>
+            <p><span>联系方式：</span><span id="contact"></span></p>
+            <p><span>家庭住址：</span><span id="address"> </span></p>
+            <p><span>状态：</span><span id="status"></span></p>
+            <p><span>班级名称：</span><span id="classname"></span></p>
+            <p><span>宿舍名称：</span><span id="chamber"></span></p>
+        </div>
+    </div>
+    <div id="ts">添加学生成功</div>
+</body>
+
+</html>
+<script>
+    function tsy(tsy) {
+        $("#ts").html(tsy);
+        $("#ts").fadeToggle(1300);
+        $("#ts").fadeToggle(1300);
+    }
+    window.onload = function () {
+        function load() {
+            $.ajax({
+                type: "get",
+                url: "http://localhost:3000/api/chakan",
+                success: function (data) {
+                    if (data == "cw") {
+                        tsy("暂无数据");
+                    }
+                    $("#name").text(data.es.name);
+                    $("#sex").text(data.es.sex);
+                    $("#age").text(data.es.age);
+                    $("#nation").text(data.es.nation);
+                    $("#contact").text(data.es.contact);
+                    $("#address").text(data.es.address);
+                    $("#status").text(data.es.status);
+                    $("#classname").text(data.es.classname);
+                    $("#chamber").text(data.es.dormitoryNo);
+                    let ss = data.c;
+                    let cs = data.cs;
+                    for (let i = 0; i < cs.length; i++) {
+                        if ($("#classname").text() == cs[i].id) {
+                            $("#classname").text(cs[i].name);
+                        }
+                    }
+                    for (let i = 0; i < ss.length; i++) {
+                        if ($("#chamber").text() == ss[i].id) {
+                            $("#chamber").text(ss[i].name+"宿舍");
+                        }
+                    }
+                    if (data.es.status == "正常") {
+                        $("#status").css("color", "green")
+                    }
+                    if (data.es.status == "外出") {
+                        $("#status").css("color", "red")
+                    }
+                    if (data.es.status == "请假") {
+                        $("#status").css("color", "blue")
+                    }
+                    if (data.es.classname == null) {
+                        $("#classname").text("暂无班级")
+                    }
+                    if (data.es.dormitoryNo == null) {
+                        $("#chamber").text("暂无宿舍")
+                    }
+                }
+            })
+        }
+        load();
+    }
+</script>
